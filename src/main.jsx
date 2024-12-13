@@ -6,6 +6,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './components/Home.jsx'
 import About from './components/About.jsx'
 import Contact from './components/Contact.jsx'
+import GlobalContextProvider from './context/GlobalContext.jsx'
+
 
 
 const router = createBrowserRouter([
@@ -34,6 +36,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <GlobalContextProvider >
     <RouterProvider router={router} />
+    </GlobalContextProvider>
   </StrictMode>
 )
