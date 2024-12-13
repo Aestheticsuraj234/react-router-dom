@@ -1,13 +1,29 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom';
 import One from './One';
 
 export default function Home() {
     const [greet , setGreet] = useState("HI👋")
-    return (
-        <div className='h-screen flex flex-col items-center justify-center'>
+    const [count, setCount] = useState(0)
+    // const a = useRef(0)
+    const bodyRef = useRef()
 
-            <One greet={greet}/>
+    const OnIncrease = ()=>{
+        setCount(count + 1)
+        bodyRef.current.style.backgroundColor = "black"
+    }
+    
+    // useEffect(()=>{
+    //     a.current  = a.current+1
+    //     console.log("Rendering ....." , a.current)
+    // })
+
+    return (
+        <div ref={bodyRef} className='h-screen flex flex-col items-center justify-center'>
+
+           <button onClick={OnIncrease } className='px-4 py-2 bg-indigo-400 text-white rounded-md font-bold text-xl'>
+            Count {count}
+           </button>
         </div>
     );
 }
